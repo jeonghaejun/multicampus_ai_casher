@@ -1,0 +1,7 @@
+
+
+// YOLO 를 위한 바운딩 툴 1
+https://github.com/tzutalin/labelImg/blob/master/README.rst
+
+// YOLO 를 위한 바운딩 툴 2
+https://github.com/developer0hye/Yolo_Label
