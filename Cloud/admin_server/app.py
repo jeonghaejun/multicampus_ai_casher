@@ -6,18 +6,26 @@ import pymysql
 
 app = Flask(__name__)
 @app.route('/')
+@app.route('/index')
 def index():
     return render_template("index.html")
 
-@app.route('/index.html')
-def index_2():
-    return render_template("index.html")
 
-
-
-@app.route('/login.html')
+@app.route('/login')
 def login():
     return render_template("login.html")
+
+@app.route('/stock')
+def stock():
+    return render_template("stock.html")
+
+@app.route('/error')
+def error():
+    return render_template("error.html")
+
+@app.route('/sales')
+def sales():
+    return render_template("sales.html")
 # @app.route('/home')
 # def home():
 #     return 'Hello, World!'
