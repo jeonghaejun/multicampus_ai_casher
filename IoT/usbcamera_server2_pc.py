@@ -19,16 +19,19 @@ def receiver(client, addr):
     reader = client.makefile('rb')
     # writer = client.makefile('wb')
 
-    data, data_len = net2.receive(reader)
-    print('-------수신 ')
-    if not data_len:
-        return
-    # data : jpeg 이미지
-    # image : bgr 이미지
-    image, key = show_image(data)
-    # AI 알고리즘 처리
-    cv2.imshow('image', image)
-    cv2.waitKey(0)
+    while True:
+        data, data_len = net2.receive(reader)
+        print('-------수신 ')
+        if not data_len:
+            return
+        # data : jpeg 이미지
+        # image : bgr 이미지
+        image, key = show_image(data)
+        # AI 알고리즘 처리
+        if (key):
+            cv2.imshow('image', image)
+            if cv2.waitKey(1) & 0xFF == ord('q'):
+                break
     cv2.destroyAllWindows()
     print('exit receiver')
 
