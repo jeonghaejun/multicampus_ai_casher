@@ -20,19 +20,20 @@ def receiver(client, addr):
     # writer = client.makefile('wb')
 
     data, data_len = net2.receive(reader)
-    print('-------수신 ')
+    # print('-------수신 ')
     if not data_len:
         return
     # data : jpeg 이미지
     # image : bgr 이미지
     image, key = show_image(data)
+    # print(image)
     # AI 알고리즘 처리
     cv2.imshow('image', image)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
-    print('exit receiver')
+    # print('exit receiver')
 
 
 if __name__ == '__main__':
     net2.server(IP_ADDRESS_PC, PORT, receiver)
-    print('start server...')
+    

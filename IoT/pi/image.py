@@ -12,7 +12,7 @@ button = Button(20)
 camera_pin = 0
 
 
-def to_jpg(frame, quality=80):  # (변환할 이미지)
+def to_jpg(frame, quality=100):  # (변환할 이미지)
     encode_param = [int(cv2.IMWRITE_JPEG_QUALITY), quality]
     is_success, jpg = cv2.imencode(".jpg", frame, encode_param)
     return jpg
@@ -24,10 +24,11 @@ def picture():
         writer = s.makefile('wb')
         cap = cv2.VideoCapture(camera_pin)
         ret, image = cap.read()
-        print(ret)
-        print(image.shape)
+        image = cv2.rotate(image,cv2.ROTATE_180)
+        # print(ret)
+        # print(image.shape)
         if not ret:
-            print('doorlock실패-----------------------------')
+            print('실패-----------------------------')
             return
         image = to_jpg(image)
         net2.send(writer, image)
