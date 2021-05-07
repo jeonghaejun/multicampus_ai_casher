@@ -26,12 +26,11 @@ def receiver(client, addr):
             return
         # data : jpeg 이미지
         # image : bgr 이미지
-        image, key = show_image(data)
+        ret, image = show_image(data)
         # AI 알고리즘 처리
-        if (key):
-            cv2.imshow('image', image)
-            if cv2.waitKey(1) & 0xFF == ord('q'):
-                break
+        cv2.imshow('image', image)
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            break
     cv2.destroyAllWindows()
     print('exit receiver')
 

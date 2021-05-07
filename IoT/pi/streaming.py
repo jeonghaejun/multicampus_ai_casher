@@ -2,6 +2,7 @@ from gpiozero import Button, Buzzer
 import socket
 import net2
 import cv2
+from signal import pause
 
 IP_ADDRESS = "172.30.1.57"
 PORT = 5000
@@ -21,13 +22,14 @@ def streaming():
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         s.connect((IP_ADDRESS, PORT))
         writer = s.makefile('wb')
-        cap = cv2.VideoCapture(camera_pin)
         while(True):
+            cap = cv2.VideoCapture(camera_pin)
             ret, frame = cap.read()
-            cap.capture(frame, format='jpeg', use_video_port=True)
+            # cap.capture(frame, format='jpeg', use_video_port=True)
             image = to_jpg(frame)
             net2.send(writer, image)
-            print(frame.shape)
+            # print(frame.shape)
             cap.release()
 
 button.when_pressed = streaming
+pause()
