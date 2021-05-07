@@ -1,4 +1,9 @@
-from flask import Flask, request, render_template
+from flask import Response, jsonify, request, render_template, redirect, url_for, make_response
+import requests
+import pymysql
+
+
+
 app = Flask(__name__)
 @app.route('/')
 def index():
@@ -7,6 +12,8 @@ def index():
 @app.route('/index.html')
 def index_2():
     return render_template("index.html")
+
+
 
 @app.route('/login.html')
 def login():
