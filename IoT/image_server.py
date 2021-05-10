@@ -3,7 +3,7 @@ import cv2
 import numpy as np
 
 
-IP_ADDRESS_PC = '172.30.1.121'
+IP_ADDRESS_PC = '192.168.0.4'
 PORT = 5000
 
 

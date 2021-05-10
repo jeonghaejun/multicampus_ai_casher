@@ -4,7 +4,7 @@ import net2
 from signal import pause
 import cv2
 
-IP_ADDRESS = "172.30.1.121"
+IP_ADDRESS = "192.168.0.4"
 PORT = 5000
 
 buzzer = Buzzer(21)
