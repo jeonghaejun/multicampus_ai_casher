@@ -48,9 +48,6 @@ def vido_streaming():
 
 def start_record():
     buzzer.beep(0.1, n=1)
-    # now = datetime.datetime.now()
-    # fname = now.strftime("%Y%m%d_%H%M")+'.h264'
-    # camera.start_recording(fname)
     threading.Thread(target=vido_streaming).start()
     print('recording on')
 
@@ -58,7 +55,6 @@ def start_record():
 def stop_record():
     buzzer.beep(0.1, n=1)
     print('recording off')
-    # camera.stop_recording()
 
 
 button.when_pressed = start_record     
