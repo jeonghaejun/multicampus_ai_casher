@@ -5,8 +5,8 @@ import pymysql
 from __init__ import app
 import json
 
-conn = pymysql.connect(host='localhost', user='root',
-                       password='1234', db='multicampus', charset='utf8')
+from .config import conn
+
 
 cursor = conn.cursor()
 
@@ -16,7 +16,7 @@ def get_items():
     # item_id 로 db에서 name과 price 불러오기
     item_id = request.args.to_dict()
 
-    sql = "SELECT * FROM item_info WHERE Item_id='{}'"
+    sql = "SELECT * FROM Item_info WHERE Item_id='{}'"
     sql = sql.format(item_id["item_id"])
 
     cursor.execute(sql)
