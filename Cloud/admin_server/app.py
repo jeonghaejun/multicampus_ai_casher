@@ -3,8 +3,9 @@ import requests
 import pymysql
 
 
-
 app = Flask(__name__)
+
+
 @app.route('/')
 @app.route('/index')
 def index():
@@ -15,17 +16,22 @@ def index():
 def login():
     return render_template("login.html")
 
+
 @app.route('/stock')
 def stock():
     return render_template("stock.html")
+
 
 @app.route('/error')
 def error():
     return render_template("error.html")
 
+
 @app.route('/sales')
 def sales():
     return render_template("sales.html")
+
+
 # @app.route('/home')
 # def home():
 #     return 'Hello, World!'
