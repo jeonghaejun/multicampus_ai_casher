@@ -4,7 +4,7 @@ import json
 import cv2
 import numpy as np
 
-HOST = '192.168.0.4'
+HOST = '172.30.1.126'
 PORT = 5000
 
 counter = 0
