@@ -31,8 +31,7 @@ for a in range(len(python_data["item"])):
     print(python_data["item"][a]["Qty"])
     item_amounts = python_data["item"][a]["Qty"]
     item_id = python_data["item"][a]["id"]
-    conn = pymysql.connect(
-        host='multicampus.clhnj2zwdisk.eu-west-2.rds.amazonaws.com', port=3306, user='admin', passwd='master123', db='multicampus', charset='utf8')
+
 
     subtraction = "UPDATE Item_info SET Qty=Qty-{} WHERE Item_id='{}'"
     subtraction = subtraction.format(item_amounts, item_id)
