@@ -2,9 +2,10 @@ from json import dumps, loads
 from botocore.vendored import requests
 import pymysql
 import json
-from ..casher_server.config import conn
-#from flask import Response
 
+#from flask import Response
+conn = pymysql.connect(
+        host='multicampus-aicasher.ccsxumbdytv4.us-east-1.rds.amazonaws.com', port=3306, user='admin', passwd='master123', db='multicampus', charset='utf8')
 
 def lambda_handler(event, context):
    
@@ -15,7 +16,7 @@ def lambda_handler(event, context):
     path_array = params_array['path']
     item_no = (path_array['item-no'])
 
-    sql = "SELECT * FROM Item_info WHERE Item_id='{}'"
+    sql = "SELECT * FROM Item_info WHERE Item_id={}"
     sql = sql.format(item_no)
 
     cursor.execute(sql)
@@ -24,13 +25,9 @@ def lambda_handler(event, context):
     result_list = []
     result_list = list(result[0])
 
-    #parameter_dict = request.args.to_dict()
-
     item['name'] = result_list[1]
     item['price'] = result_list[2]
-    encoding='UTF-8-sig'
-
-    #str_return = (dumps(item), status=200, mimetype='appplication/json')
+    
 
     return {
         'statusCode': 200,

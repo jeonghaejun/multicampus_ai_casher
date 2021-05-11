@@ -5,9 +5,15 @@ import pymysql
 from __init__ import app
 import json
 
-from .config import conn
+# from .config import conn
 
-
+conn = {
+    "host": "multicampus.cx4rv1rxgkqv.ap-northeast-2.rds.amazonaws.com",
+    "port": 3306,
+    "user": "admin",
+    "password": "master123",
+    "database": "multicampus"
+}
 cursor = conn.cursor()
 
 
@@ -39,8 +45,16 @@ def get_items():
 
 
 
-    # deduction = "UPDATE item_info SET Qty=Qty-1 WHERE Item_id='{}'"
-    # deduction = deduction.format(item_id["item_id"])
 
-    # cursor.execute(deduction)
-    # conn.commit()
+@app.route('/delete',methods=['get'])
+def deduction_items():
+    item_id = request.args.to_dict()
+    item_amounts = requests
+
+    deduction = "UPDATE item_info SET Qty=Qty-{} WHERE Item_id='{}'"
+    deduction = deduction.format(item_id["item_id"])
+
+    cursor.execute(deduction)
+    conn.commit()
+
+    return Response(dumps(item), status=200, mimetype='appplication/json')
