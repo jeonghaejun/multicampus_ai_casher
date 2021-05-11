@@ -19,7 +19,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="품목" />
+            android:text="품목"
+            android:textSize="20sp"/>
 
         <TextView
             android:id="@+id/amount"
@@ -27,7 +28,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="수량" />
+            android:text="수량"
+            android:textSize="20sp"/>
 
         <TextView
             android:id="@+id/price"
@@ -35,7 +37,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="금액" />
+            android:text="금액"
+            android:textSize="20sp"/>
 
         <TextView
             android:id="@+id/sum"
@@ -43,7 +46,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="총액" />
+            android:text="총액"
+            android:textSize="20sp"/>
 
         <TextView
             android:id="@+id/cancel"
@@ -51,7 +55,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="취소" />
+            android:text="취소"
+            android:textSize="20sp"/>
 
     </LinearLayout>
 
@@ -77,36 +82,43 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="추파츕스" />
+                    android:text="추파츕스"
+                    android:textSize="20sp"/>
 
                 <TextView
                     android:id="@+id/amount_num"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="20" />
+                    android:gravity="right"
+                    android:text="20"
+                    android:textSize="20sp"/>
 
                 <TextView
                     android:id="@+id/price_num"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="200" />
+                    android:gravity="right"
+                    android:text="200"
+                    android:textSize="20sp"/>
 
                 <TextView
                     android:id="@+id/sum_num"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="4,000" />
+                    android:gravity="right"
+                    android:text="4,000   "
+                    android:textSize="20sp"/>
 
                 <Button
                     android:id="@+id/cancel_button"
                     android:layout_width="0dp"
-                    android:layout_height="30dp"
+                    android:layout_height="50dp"
                     android:layout_weight="1"
-                    android:text="X"
-                    android:textSize="8sp" />
+                    android:text="삭제"
+                    android:textSize="15sp" />
 
             </LinearLayout>
 
@@ -117,9 +129,10 @@
         android:id="@+id/total_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="128dp"
-        android:layout_marginBottom="64dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="128dp"
         android:text="결제 금액"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -127,20 +140,21 @@
         android:id="@+id/total_sum"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="128dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="32dp"
         android:text="4,000원"
-        android:textSize="50sp"
+        android:textSize="80sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/total_price" />
 
     <Button
         android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="128dp"
+        android:layout_width="300dp"
+        android:layout_height="150dp"
+        android:layout_marginEnd="24dp"
         android:layout_marginBottom="16dp"
+        android:textSize="80sp"
         android:text="결제"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
