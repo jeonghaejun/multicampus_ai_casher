@@ -6,8 +6,7 @@ import json
 def lambda_handler(event, context):
     # TODO implement
     
-    conn = pymysql.connect(host='multicampus.clhnj2zwdisk.eu-west-2.rds.amazonaws.com', user='admin',
-                           passwd='master123', db='multicampus', port=3306, charset='utf8')
+    conn = pymysql.connect()
     cursor = conn.cursor()
     
     success_flag = 1
