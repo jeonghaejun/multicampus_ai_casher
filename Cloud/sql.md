@@ -17,6 +17,8 @@ CREATE TABLE Item_info(
 	Category VARCHAR(30) NOT NULL 
 )charset = utf8;
 
+
+ALTER TABLE Item_info AUTO_INCREMENT=10000;
 ```
 
 
