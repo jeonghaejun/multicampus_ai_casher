@@ -8,8 +8,31 @@
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">실시간 판매 현황 페이지</h1>
-{#            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i#}
-{#                    class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>#}
+            {#            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i#}
+            {#                    class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>#}
+        </div>
+        <div>
+            <table>
+                <tr>
+                    <th>휴대폰 번호</th>
+                    <th>날짜</th>
+                    <th>영수증 정보</th>
+                </tr>
+
+                {% for item_ea in result %}
+                    <tr>
+                        <td>{{ item_ea.User_phonenum }}</td>
+                        <td>{{ item_ea.DATE }}</td>
+
+                        <td>
+                            {% for items in item_ea.History.item %}
+                            {{ items.id }}번 &nbsp; {{ items.Qty }}개
+                            <br>
+                        {% endfor %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
         </div>
     </div>
     <!-- /.container-fluid -->
