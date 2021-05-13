@@ -5,7 +5,7 @@ import pymysql
 from __init__ import app
 import json
 
-from .config import conn
+# from .config import conn
 
 
 cursor = conn.cursor()
@@ -39,8 +39,16 @@ def get_items():
 
 
 
-    # deduction = "UPDATE item_info SET Qty=Qty-1 WHERE Item_id='{}'"
-    # deduction = deduction.format(item_id["item_id"])
 
-    # cursor.execute(deduction)
-    # conn.commit()
+@app.route('/delete',methods=['get'])
+def deduction_items():
+    item_id = request.args.to_dict()
+    item_amounts = requests
+
+    deduction = "UPDATE item_info SET Qty=Qty-{} WHERE Item_id='{}'"
+    deduction = deduction.format(item_id["item_id"])
+
+    cursor.execute(deduction)
+    conn.commit()
+
+    return Response(dumps(item), status=200, mimetype='appplication/json')
