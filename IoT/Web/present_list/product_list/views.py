@@ -12,14 +12,13 @@ from django.urls import reverse
 class BoardLV(ListView):
     model = Product
     template_name = 'show.html'   # 템플릿 파일명 변경
-    context_object_name = 'show'          # 컨텍스트 객체 이름 변경(object_list)
-    paginate_by = 20                        # 페이지네이션, 페이지 당 문서 건 수
+    context_object_name = 'product_list'          # 컨텍스트 객체 이름 변경(object_list)
 
-# DetailView
-class BoardDV(DetailView):
-    model = Product
+def index(request):
+    return render(request, 'show.html', {})
 
-class BoardDeleteView(DeleteView):
-    model = Product
-    success_url = reverse_lazy('board:index')
+def client(request):
+    return render(request, 'client.html')
 
+def erase_list(request):
+    pass

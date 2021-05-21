@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'product_list',
 ]
 
+ASGI_APPLICATION = 'mysite.routing.application'
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
