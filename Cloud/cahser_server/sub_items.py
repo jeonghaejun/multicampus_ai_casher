@@ -26,7 +26,7 @@ item = json.dumps(item)  # json 파일로 변형
 python_data = json.loads(item)  # 파이썬 dict 파일로 변형
 
 conn = pymysql.connect(
-    host='multicampus.clhnj2zwdisk.eu-west-2.rds.amazonaws.com', port=3306, user='admin', passwd='master123', db='multicampus', charset='utf8')
+    host=os.environ['DB_HOST'], port=3306, user='admin', passwd=os.environ['DB_PW'], db='multicampus', charset='utf8')
 
 for a in range(len(python_data["item"])):
 

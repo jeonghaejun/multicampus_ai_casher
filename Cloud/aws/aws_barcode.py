@@ -14,10 +14,10 @@ def lambda_handler(event, context):
     item = {}
     params_array = event['params']
     path_array = params_array['path']
-    item_no = (path_array['item-no'])
+    code_num = (path_array['code-num'])
 
-    sql = "SELECT * FROM Item_info WHERE Item_id={}"
-    sql = sql.format(item_no)
+    sql = "SELECT * FROM Stock_code WHERE Barcode='{}'"
+    sql = sql.format(code_num)
 
     cursor.execute(sql)
     conn.commit()

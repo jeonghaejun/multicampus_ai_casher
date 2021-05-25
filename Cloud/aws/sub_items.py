@@ -5,14 +5,14 @@ import pymysql
 import json
 
 
-
-
 def subtract_items(item_id, item_amounts):
+
+
     conn = pymysql.connect(
-        host='multicampus-aicasher.ccsxumbdytv4.us-east-1.rds.amazonaws.com', port=3306, user='admin', passwd='master123', db='multicampus', charset='utf8')
+        host=os.environ['DB_HOST'], port=3306, user='admin', passwd=os.environ['DB_PW'], db='multicampus', charset='utf8')
 
     subtraction = "UPDATE Item_info SET Qty=Qty-{} WHERE Item_id='{}'"
-    subtraction = subtraction.format(item_amounts,item_id)
+    subtraction = subtraction.format(item_amounts, item_id)
     print(subtraction)
     cursor = conn.cursor()
 

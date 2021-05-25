@@ -32,7 +32,7 @@ items = {}
 
 def insert_sales(item, phonenum):
     conn = pymysql.connect(
-        host='multicampus.clhnj2zwdisk.eu-west-2.rds.amazonaws.com', port=3306, user='admin', passwd='master123', db='multicampus', charset='utf8')
+        host=os.environ['DB_HOST'], port=3306, user='admin', passwd=os.environ['DB_PW'], db='multicampus', charset='utf8')
 
     cursor = conn.cursor()
     sql = "INSERT INTO Sales_history(History,User_phonenum) values('{}','{}')"

@@ -40,7 +40,7 @@ def get_items():
 
 
 
-@app.route('/delete',methods=['get'])
+@app.route('/delete',methods=['put'])
 def deduction_items():
     item_id = request.args.to_dict()
     item_amounts = requests
