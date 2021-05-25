@@ -4,6 +4,7 @@ import json
 import cv2
 import numpy as np
 
+# AWS 내부 아이피
 HOST = '172.30.1.96'
 PORT = 5000
 

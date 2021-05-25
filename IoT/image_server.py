@@ -2,8 +2,13 @@ import net2
 import cv2
 import numpy as np
 
+<<<<<<< HEAD
 
 IP_ADDRESS_PC = '172.30.1.125'
+=======
+# AWS 내부 아이피
+IP_ADDRESS_PC = '172.30.1.96'
+>>>>>>> 8e18ec905586215dfa8293b9a94b4ee481b814a8
 PORT = 5000
 
 
