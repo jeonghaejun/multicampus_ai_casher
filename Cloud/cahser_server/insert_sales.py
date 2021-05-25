@@ -31,8 +31,11 @@ python_data = json.loads(item)
 items = {}
 
 def insert_sales(item, phonenum):
+<<<<<<< HEAD
     conn = pymysql.connect(
         host=os.environ['DB_HOST'], port=3306, user='admin', passwd=os.environ['DB_PW'], db='multicampus', charset='utf8')
+=======
+>>>>>>> 01789e33b65e3e1c701a81ad43cb75e8f71f8d89
 
     cursor = conn.cursor()
     sql = "INSERT INTO Sales_history(History,User_phonenum) values('{}','{}')"

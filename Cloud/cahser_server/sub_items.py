@@ -25,8 +25,12 @@ item = {
 item = json.dumps(item)  # json 파일로 변형
 python_data = json.loads(item)  # 파이썬 dict 파일로 변형
 
+<<<<<<< HEAD
 conn = pymysql.connect(
     host=os.environ['DB_HOST'], port=3306, user='admin', passwd=os.environ['DB_PW'], db='multicampus', charset='utf8')
+=======
+
+>>>>>>> 01789e33b65e3e1c701a81ad43cb75e8f71f8d89
 
 for a in range(len(python_data["item"])):
 
