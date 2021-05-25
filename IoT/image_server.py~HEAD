@@ -3,11 +3,7 @@ import cv2
 import numpy as np
 
 
-<<<<<<< HEAD:IoT/image_server.py
 IP_ADDRESS_PC = '172.30.1.96'
-=======
-IP_ADDRESS_PC = '172.30.1.57'
->>>>>>> 8e256a3dd9e272199fe4453636bcab06d6cbba3b:IoT/usbcamera_server_pc.py
 PORT = 5000
 
 
