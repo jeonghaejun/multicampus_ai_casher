@@ -1,0 +1,17 @@
+<script>
+    function sendInfo(){
+        //textarea 객체를 이용해 id를 가져온다.
+        var info = document.getElementById("itemInfo");
+
+        //json 데이터 생성. type은 'info'로 지정
+        //text는 table의 value로 지정
+        var msg = {
+            type : "info",
+            text : info.value
+        };
+        webSocket.send(JSON.stringify(msg));
+
+        //객체의 값 초기화
+        info.value = "";
+    }
+</script>

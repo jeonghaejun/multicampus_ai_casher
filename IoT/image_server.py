@@ -3,7 +3,7 @@ import cv2
 import numpy as np
 
 
-IP_ADDRESS_PC = '172.30.1.96'
+IP_ADDRESS_PC = '172.30.1.125'
 PORT = 5000
 
 
@@ -36,4 +36,3 @@ def receiver(client, addr):
 
 if __name__ == '__main__':
     net2.server(IP_ADDRESS_PC, PORT, receiver)
-    
