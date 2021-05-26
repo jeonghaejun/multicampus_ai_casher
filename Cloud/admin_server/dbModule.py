@@ -1,11 +1,12 @@
 import pymysql
+import config
 
 
 class Database():
     def __init__(self):
-        self.db = pymysql.connect(host='multicampus.clhnj2zwdisk.eu-west-2.rds.amazonaws.com',
-                                  user='admin',
-                                  passwd='master123',
+        self.db = pymysql.connect(host=config.dbhost,
+                                  user=config.dbuser,
+                                  passwd=config.dbpasswd,
                                   db='multicampus',
                                   port=3306,
                                   charset='utf8')
