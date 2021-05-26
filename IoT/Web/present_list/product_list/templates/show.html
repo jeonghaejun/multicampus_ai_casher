@@ -45,17 +45,22 @@
 </table>
 
 
-    {% if user.is_active %}
     <div class="text-right mr-3">
         <a href="#" class="btn btn-primary btn-sm"> 결제</a>
     </div>
-    {% endif %}
 
 
 
-    {% include "pagination.html" %}
 
 </div>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script>
+        $('#done_button').click(function(){
+        var erase = $('erase').val()
+    $.ajax({
+        
+    })})
+    </script>
 
 {% endblock %}
