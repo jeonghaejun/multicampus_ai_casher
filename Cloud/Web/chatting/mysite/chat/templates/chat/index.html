@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <title>Chat Rooms</title>
+</head>
+<body>
+
+<div style="text-align: center; margin: auto; padding: 20px">빨리 캐셔 로그인</div>
+<div class="card w-50 " style="text-align: center; float:none; margin:0 auto">
+     <div class="card-header">관리자 비밀번호</div>
+    <input style="margin: 20px" id="room-name-input" type="text" size="30"/><br/>
+    <button style="margin: 5px" class="btn btn-info" id="room-name-submit" type="button">로그인</button>
+</div>
+    <script>
+        document.querySelector("#room-name-input").focus();
+        document.querySelector("#room-name-input").addEventListener("keyup",(e) => {
+            if(e.keyCode === 13){
+                document.querySelector("#room-name-submit").click();
+            }
+        });
+
+        document.querySelector("#room-name-submit").addEventListener("click",(e) => {
+            let roomName = document.querySelector("#room-name-input").value;
+            if (roomName != 1234) {
+                alert("비밀번호 확인")
+            } else {
+                window.location.pathname = `/chat/${roomName}/`;
+            }
+        });
+    </script>
+</body>
+</html>
