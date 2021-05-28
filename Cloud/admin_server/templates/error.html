@@ -12,19 +12,19 @@
 {#                    class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>#}
         </div>
      <div>
-            <table>
+            <table class ="table table-striped">
     <tr>
         <th>오탐 ID</th>
         <th>오탐 아이템</th>
-        <th>사용자 선택 아이템</th>
+{#        <th>사용자 선택 아이템</th>#}
         <th>이미지</th>
     </tr>
 
         {% for error in result %}
             <tr>
-                <td>{{ error.Error_id }}</td>
-                <td>{{ error.Wrong_item_id }}</td>
-                <td>{{ error.Selected_id }}</td>
+                <td width="100px">{{ error.Error_id }}</td>
+                <td>{{ error.Result_info }}</td>
+{#                <td>{{ error.Selected_id }}</td>#}
                 <td><img src="{{ error.Errorimg_id }}"></td>
             </tr>
         {% endfor %}

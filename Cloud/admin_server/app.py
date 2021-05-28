@@ -29,7 +29,12 @@ def stock():
 
 @app.route('/error')
 def error():
-    return render_template("error.html")
+    data_db = dbModule.Database()
+    sql = "SELECT * FROM Error_detection"
+    row = data_db.executeAll(sql)
+    for item in row:
+        item['Errorimg_id'] = "https://yangjae-team07-bucket.s3.eu-west-2.amazonaws.com/"+ item['Errorimg_id'] + ".jpg"
+    return render_template("error.html", result=row)
 
 
 @app.route('/sales')
