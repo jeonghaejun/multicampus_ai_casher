@@ -1,7 +1,6 @@
 import boto3
-import config
 
-s3 = boto3.client('s3',aws_access_key_id=config.aws_id,
+s3 = boto3.client('s3',aws_access_key_id=,
                   aws_secret_access_key=config.aws_key) # github 같은 public repo에 올릴때 같이 올리지 않도록 주의!
 
 filename = '43_0_fail.jpg'  # 로컬에서 올릴 파일 및 경로 이름

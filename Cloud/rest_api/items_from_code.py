@@ -1,9 +1,9 @@
 import requests
 import json
 
-barcode = {iot에서 정해주삼}
+barcode = 8801062012725
 
-url = "https://475pko0wjc.execute-api.eu-west-2.amazonaws.com/dev/barcode/"+ barcode
+url = "https://475pko0wjc.execute-api.eu-west-2.amazonaws.com/dev/barcode/8801062012725"
 
 #url = "https://www.test.com"
 
