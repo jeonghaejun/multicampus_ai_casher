@@ -35,10 +35,7 @@
     <tbody>
         {%for product_list in Product%}
         <tr>
-            <td>{{product_list.Product_name}}</a></td>
-            <td>{{product_list.Qty}}</td>
-            <td>{{product_list.Price}}</td>
-            <td>{{product_list.Sum}}</td>
+            <td>    <textarea id="chat-log" cols="100" rows="20"></textarea></td>
         </tr>
         {% endfor %}
     </tbody>
@@ -46,7 +43,7 @@
 
 
     <div class="text-right mr-3">
-            <a id="done_button", href="client.html" class="btn btn-primary btn-sm"> 결제</a>
+        <input id="chat-message-submit" type="button" class="btn btn-primayr btn-sm" value="결제">
     </div>
 
 
@@ -54,13 +51,39 @@
 
 </div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-    <script>
-        $('#done_button').click(function(){
-        var erase = $('erase').val()
-    $.ajax({
-        
-    })})
-    </script>
+<script type="text/javascript">
+    let roomName = "{{ room_name | escapejs }}";
+
+    let chatSocket = new WebSocket(
+        `ws://${window.location.host}/ws/chat/${roomName}/`
+    );
+
+    chatSocket.onmessage = (e) => {
+        let data = JSON.parse(e.data);
+        let message = data['message'];
+        document.querySelector("#chat-log").value += (message + '\n');
+    };
+
+    chatSocket.onclose = (e) => {
+        console.error('Chat socket closed unexpectedly');
+    };
+
+    document.querySelector("#chat-message-input").focus();
+    document.querySelector("#chat-message-input").addEventListener("keyup",(e) => {
+        if (e.keyCode === 13) { 
+            document.querySelector("#chat-message-submit").click();
+        }
+    });
+
+    document.querySelector("#chat-message-submit").addEventListener("click", (e) => {
+        let messageInputDom = document.querySelector("#chat-message-input");
+        let message = messageInputDom.value;
+        chatSocket.send(JSON.stringify({
+            'message' : message
+        }));
+
+        messageInputDom.value = '';
+    });
+</script>
 
 {% endblock %}

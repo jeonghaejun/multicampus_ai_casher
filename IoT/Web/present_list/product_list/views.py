@@ -17,8 +17,10 @@ class BoardLV(ListView):
 def index(request):
     return render(request, 'show.html', {})
 
-def client(request):
-    return render(request, 'client.html')
-
+def room(request, room_name):
+    return render(request, 'chat/room.html', {
+        'room_name': room_name
+    })
+    
 def erase_list(request):
     pass
