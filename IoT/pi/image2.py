@@ -4,12 +4,14 @@ import net2
 from signal import pause
 import cv2
 
-IP_ADDRESS = "3.35.190.203"
+IP_ADDRESS = "18.169.67.45"
 PORT = 8902
+# IP_ADDRESS = '172.30.1.89'
+# PORT = 5000
 
 buzzer = Buzzer(21)
 button = Button(20)
-camera_pin = 0
+camera_pin = 2
 
 
 def to_jpg(frame, quality=100):  # (변환할 이미지)

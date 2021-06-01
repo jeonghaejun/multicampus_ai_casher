@@ -1,11 +1,14 @@
-from gpiozero import LED, Buzzer
+from gpiozero import LED
 import spidev
+import time
 
-buzzer = Buzzer(21)
 led = LED(16)
 spi = spidev.SpiDev()
 spi.open(0, 0)
 spi.max_speed_hz = 1350000
+
+channel1 = 0
+# channel2 = 1
 
 
 def analog_read(channel):
@@ -15,8 +18,12 @@ def analog_read(channel):
 
 
 while True:
-    reading = analog_read(0)
-    if reading <= 1000:
+    time.sleep(1)
+    reading1 = analog_read(channel1)
+    # reading2 = analog_read(channel2)
+    print(reading1)
+    # print(reading2)
+    if reading1 <= 1000:
         led.on()
     else:
         led.off()
