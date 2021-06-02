@@ -11,6 +11,27 @@
 {#            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i#}
 {#                    class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>#}
         </div>
+    <div>
+    <table class ="table table-striped">
+    <tr>
+        <th>아이템 ID</th>
+        <th>이름</th>
+        <th>가격</th>
+        <th>수량</th>
+        <th>카테고리</th>
+    </tr>
+
+        {% for item in result %}
+            <tr>
+                <td>{{ item.Item_id }}</td>
+                <td>{{ item.Product_name }}</td>
+                <td>{{ item.Price }}원</td>
+                <td>{{ item.Qty }}개</td>
+                <td>{{ item.Category }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    </div>
     </div>
     <!-- /.container-fluid -->
 {% endblock %}

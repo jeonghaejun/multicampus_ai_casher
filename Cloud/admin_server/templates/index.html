@@ -11,6 +11,12 @@
 {#            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i#}
 {#                    class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>#}
         </div>
+
+        <div style="width: 100%">
+            <button class="mainbt btn btn-info" type="button" onclick="location.href='{{ url_for('stock') }}'">재고 관리</button>
+            <button class="mainbt btn btn-info" type="button" onclick="location.href='{{ url_for('error') }}'">오탐 관리</button>
+            <button class="mainbt btn btn-info" type="button" onclick="location.href='{{ url_for('sales') }}'">판매 관리</button>
+        </div>
 {##}
 {#        <!-- Content Row -->#}
 {#        <div class="row">#}
