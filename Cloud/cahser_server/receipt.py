@@ -20,7 +20,7 @@ my_config = Config(
 
 def lambda_handler(event, context):
     conn = pymysql.connect(
-    host=os.environ['DB_HOST'], port=3306, user='admin', passwd=os.environ['DB_PW'], db='multicampus', charset='utf8')
+    host=, db='multicampus', charset='utf8')
     cursor = conn.cursor()
     
     client = boto3.client('sns',config=my_config)
@@ -41,10 +41,12 @@ def lambda_handler(event, context):
         
         msg += str(result[0][0]) + ", " + str(item["Qty"]) + "개 구매하셨습니다.\n"
         
+    phone_number = '+821092220728'
     try:
         response = client.publish(
             PhoneNumber = phone_number,
             Message=f'[빨리캐셔 모바일 영수증]\n{msg}',
+            TopicArn='arn:aws:sns:eu-west-2:940168446867:MyTopic'
         )
         print(f'send to {phone_number}')
         print(response)
