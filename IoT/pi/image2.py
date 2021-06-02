@@ -11,7 +11,7 @@ PORT = 8902
 
 buzzer = Buzzer(21)
 button = Button(20)
-camera_pin = 2
+camera_pin = 0
 
 
 def to_jpg(frame, quality=100):  # (변환할 이미지)
