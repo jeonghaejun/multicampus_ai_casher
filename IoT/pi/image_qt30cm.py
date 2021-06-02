@@ -15,12 +15,12 @@ PORT = 8902
 
 buzzer = Buzzer(21)
 button = Button(20)
-camera_pin1 = 2
 led = LED(16)
+camera_pin1 = 2
+
 spi = spidev.SpiDev()
 spi.open(0, 0)
 spi.max_speed_hz = 1350000
-
 channel1 = 1
 
 
@@ -38,15 +38,16 @@ def picture1():
         cap = cv2.VideoCapture(camera_pin1)
         ret, image = cap.read()
         image = cv2.rotate(image, cv2.ROTATE_180)
-        # print(ret)
-        # print(image.shape)
+
         if not ret:
             print('실패-----------------------------')
             return
+
         image = to_jpg(image)
         net2.send(writer, image)
-        buzzer.beep(0.1, n=1)
         cap.release()
+
+        buzzer.beep(0.1, n=1)
 
 
 def analog_read(channel):
@@ -60,9 +61,11 @@ while True:
     reading2 = analog_read(channel1)
     
     if reading2 <= 1000:
-        t1 = threading.Thread(target=picture1)
         led.on()
+
+        t1 = threading.Thread(target=picture1)
         t1.start()
+
         time.sleep(3)
     else:
         led.off()

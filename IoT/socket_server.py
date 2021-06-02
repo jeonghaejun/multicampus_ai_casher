@@ -3,7 +3,7 @@ import time
 
 # IP_ADDRESS_PC = '172.31.1.75'
 IP_ADDRESS = '172.30.1.101'
-PORT = 8898
+PORT = 9000
 
 serverSock = socket(AF_INET, SOCK_STREAM)
 serverSock.bind((IP_ADDRESS, PORT))
@@ -19,5 +19,5 @@ print(str(addr), '에서 접속되었습니다.')
 while True:
     x=input()
     if x == "":
-        sendData="False"
+        sendData="0"
         connectionSock.send(sendData.encode('utf-8'))
