@@ -21,6 +21,9 @@ purchaserules #373
 summary(purchaserules)
 inspect(sort(purchaserules,by=c("confidence","lift"))[1:10])
 
+purchaserules<-sort(purchaserules,by=c("confidence","lift"))
+inspect(purchaserules[1:10])
+
 write(purchaserules, "apriori_rules.csv", sep=",", quote=FALSE, row.names=FALSE)
 
 
