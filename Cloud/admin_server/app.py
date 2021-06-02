@@ -7,7 +7,6 @@ import dbModule
 
 app = Flask(__name__)
 
-
 @app.route('/')
 @app.route('/index')
 def index():
@@ -27,6 +26,7 @@ def stock():
     return render_template("stock.html", result=row)
 
 
+
 @app.route('/error')
 def error():
     data_db = dbModule.Database()
@@ -37,14 +37,18 @@ def error():
     return render_template("error.html", result=row)
 
 
+
 @app.route('/sales')
 def sales():
+
     data_db = dbModule.Database()
     sql = "SELECT * FROM Sales_history"
     row = data_db.executeAll(sql)
     for item in row:
         item['History']= json.loads(item['History'])
     return render_template("sales.html", result=row)
+
+
 
 
 # @app.route('/home')
@@ -54,4 +58,6 @@ def sales():
 # def user():
 #     return 'Hello, User!'
 if __name__ == '__main__':
+
     app.run(debug=True,host='0.0.0.0', port=5000)
+
