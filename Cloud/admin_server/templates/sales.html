@@ -25,7 +25,7 @@
                         <td>{{ item_ea.DATE }}</td>
 
                         <td>
-                            {% for items in item_ea.History.item %}
+                            {% for items in reversed(item_ea.History.item_) %}
                             {{ items.id }}번 &nbsp; {{ items.Qty }}개
                             <br>
                         {% endfor %}

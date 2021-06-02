@@ -7,7 +7,7 @@
     <title>캐셔</title>
 </head>
 <body>
-    <textarea id="chat-log" cols="100" rows="20"></textarea><br />
+    <textarea id="chat-log" cols="100" rows="20" style="text-align: center; font-size:10px;"></textarea><br />
     <input id="total-price" type="text" font_size="100" value="가격" disabled>
     <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -66,8 +66,9 @@
             xmlhttp.open("POST", theUrl);
             xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
             xmlhttp.send(JSON.stringify(result));
-            window.location.replace({% url 'complete'%});
-        }
+            window.location.replace({% i'complete' %});
+          }
+
         function send_receipt(){
 
             var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance
