@@ -27,22 +27,9 @@ inspect(purchaserules[1:10])
 write(purchaserules, "apriori_rules.csv", sep=",", quote=FALSE, row.names=FALSE)
 
 
-plot(sort(purchaserules, by = c("confidence","lift"))[1:10], method = "grouped")
-plot(sort(purchaserules, by = "confidence")[1:10], method = "grouped")
-plot(sort(purchaserules, by = "lift")[1:10], method = "grouped")
+plot(purchaserules[1:10], method = "grouped")
 
-
-plot(sort(purchaserules, by = c("confidence","lift"))[1:10], method="graph", control=list(type="itemsets"),
-     vertex.label.cex = 0.7,
-     edge.arrow.size = 0.3,
-     edge.arrow.width = 2)
-
-plot(sort(purchaserules, by = "lift")[1:10], method="graph", control=list(type="itemsets"),
-     vertex.label.cex = 0.7,
-     edge.arrow.size = 0.3,
-     edge.arrow.width = 2)
-
-plot(sort(purchaserules, by = "confidence")[1:10], method="graph", control=list(type="itemsets"),
+plot(purchaserules[1:10], method="graph", control=list(type="itemsets"),
      vertex.label.cex = 0.7,
      edge.arrow.size = 0.3,
      edge.arrow.width = 2)
