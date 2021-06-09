@@ -1,7 +1,6 @@
 import requests
 import json
 import asyncio
-# 웹 소켓 모듈을 선언한다.
 import websockets
 
 async def connect(json_input):
