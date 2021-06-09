@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <title>Chat Rooms</title>
+</head>
+<body>
+
+<div style="text-align: center; margin: auto; padding: 20px">결제 완료</div>
+<div class="card w-50 " style="text-align: center; float:none; margin:0 auto">
+     <div class="card-header">결제 완료되었습니다!</div>
+    <button style="margin: 5px" class="btn btn-info"  onclick="location.href={% url 'index'%}" id="room-name-submit" type="button">홈</button>
+</div>
+    <script>
+        document.querySelector("#room-name-input").focus();
+        document.querySelector("#room-name-input").addEventListener("keyup",(e) => {
+            if(e.keyCode === 13){
+                document.querySelector("#room-name-submit").click();
+            }
+        });
+
+        document.querySelector("#room-name-submit").addEventListener("click",(e) => {
+            {#window.location.replace();#}
+        });
+    </script>
+</body>
+</html>
