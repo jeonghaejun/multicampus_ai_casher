@@ -1,0 +1,4 @@
+config/*.txt
+/cahser_server/config.py
+/aws/config.py
+/admin_server/config.py
