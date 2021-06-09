@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <title>캐셔</title>
+</head>
+<body>
+    <textarea id="chat-log" cols="100" rows="20" style="text-align: center; font-size:10px;"></textarea><br />
+    <input id="total-price" type="text" font_size="100" value="가격" disabled>
+    <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  결제
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">결제</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        영수증 출력하시겠습니까?
+      </div>
+      <div class="modal-footer">
+          <button class="btn btn-primary" data-bs-target="#exampleModalToggle2"  data-bs-toggle="modal" data-bs-dismiss="modal">예</button>
+          <button type="button" class="btn btn-secondary" onclick="send_result()" data-bs-dismiss="modal">아니오</button>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalToggleLabel2">영수증 출력</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        영수증 전화번호 입력 ex)010-1234-5678<br>
+
+          <input id="phone-number" type="text" font_size="100" placeholder="전화번호"><br />
+     </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" data-bs-dismiss="modal" onclick="send_receipt()">출력</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close">취소</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <script type="text/javascript">
+        let total_price = 0
+
+        let roomName = "{{ room_name | escapejs }}";
+
+        let result = {"item": [], "phonenum" : ""}
+
+        function send_result(){
+            var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance
+            var theUrl = "https://475pko0wjc.execute-api.eu-west-2.amazonaws.com/dev/result";
+            xmlhttp.open("POST", theUrl);
+            xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+            xmlhttp.send(JSON.stringify(result));
+            window.location.replace({% i'complete' %});
+          }
+
+        function send_receipt(){
+
+            var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance
+            var theUrl = "https://475pko0wjc.execute-api.eu-west-2.amazonaws.com/dev/receipt";
+            xmlhttp.open("POST", theUrl);
+            xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+            result["phonenum"] = document.querySelector("#phone-number").value;
+            xmlhttp.send(JSON.stringify(result));
+            send_result();
+        }
+
+        {#var myModal = document.getElementById('myModal')#}
+        {#var myInput = document.getElementById('myInput')#}
+        {##}
+        {#myModal.addEventListener('shown.bs.modal', function () {#}
+        {#  myInput.focus()})#}
+
+        let chatSocket = new WebSocket(
+            `ws://${window.location.host}/ws/chat/${roomName}/`
+        );
+
+        chatSocket.onmessage = (e) => {
+            let data = JSON.parse(e.data);
+            let message = data['message']['item'];
+
+            for(let contents in message)
+            {
+                let calc_price = message[contents]['price'] * message[contents]['Qty'];
+                total_price += calc_price
+
+            document.querySelector("#chat-log").value += ("이름 : " + message[contents]['name'] + "\t\t\t 가격 : " + message[contents]['price'] + "원 \t" +
+                message[contents]['Qty'] + "개\t" + "총 " + calc_price +"원\n");
+
+                document.querySelector("#total-price").value = total_price +"원";
+                let json = {"id" : message[contents]['id'], "Qty" : message[contents]['Qty']};
+                result['item'].push(json);
+            }
+
+        };
+
+        chatSocket.onclose = (e) => {
+            console.error('Chat socket closed unexpectedly');
+        };
+
+        document.querySelector("#chat-message-input").focus();
+        document.querySelector("#chat-message-input").addEventListener("keyup",(e) => {
+            if (e.keyCode === 13) { 
+                document.querySelector("#chat-message-submit").click();
+            }
+        });
+
+        document.querySelector("#chat-message-submit").addEventListener("click", (e) => {
+            let messageInputDom = document.querySelector("#chat-message-input");
+            let message = messageInputDom.value;
+            chatSocket.send(JSON.stringify({
+                'message' : message
+            }));
+
+            messageInputDom.value = '';
+        });
+    </script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+</body>
+</html>
