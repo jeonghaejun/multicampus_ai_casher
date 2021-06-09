@@ -14,7 +14,7 @@ import threading
 import io
 import net2
 
-HOST = '192.168.0.4'
+HOST = '172.31.4.72'
 PORT = 5000
 
 buzzer = Buzzer(21)
@@ -46,18 +46,18 @@ def vido_streaming():
 
 
 
-def start_record():
+def start_streaming():
     buzzer.beep(0.1, n=1)
     threading.Thread(target=vido_streaming).start()
     print('recording on')
 
 
-def stop_record():
+def stop_streaming():
     buzzer.beep(0.1, n=1)
     print('recording off')
 
 
-button.when_pressed = start_record     
-button.when_released = stop_record
+button.when_pressed = start_streaming    
+button.when_released = stop_streaming
 
 pause()

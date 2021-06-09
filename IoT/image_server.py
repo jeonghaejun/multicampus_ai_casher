@@ -3,8 +3,13 @@ import cv2
 import numpy as np
 
 
+<<<<<<< HEAD
 IP_ADDRESS_PC = '172.30.1.126'
+=======
+IP_ADDRESS_PC = '172.30.1.89'
+>>>>>>> 4e9d44c9ea19ff9ee515a172d4781476525affdc
 PORT = 5000
+count = 0
 
 
 def show_image(data):
@@ -16,6 +21,9 @@ def show_image(data):
 
 
 def receiver(client, addr):
+    global count
+    # count += 1
+    filename = count
     reader = client.makefile('rb')
     # writer = client.makefile('wb')
 
@@ -26,9 +34,10 @@ def receiver(client, addr):
     # data : jpeg 이미지
     # image : bgr 이미지
     image, key = show_image(data)
+    # cv2.imwrite("test" + str(count) + ".jpg"  , image)
     # print(image)
     # AI 알고리즘 처리
-    cv2.imshow('image', image)
+    cv2.imshow(str(filename), image)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
     # print('exit receiver')
@@ -36,4 +45,3 @@ def receiver(client, addr):
 
 if __name__ == '__main__':
     net2.server(IP_ADDRESS_PC, PORT, receiver)
-    
