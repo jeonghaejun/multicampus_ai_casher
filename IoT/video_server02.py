@@ -4,12 +4,8 @@ import json
 import cv2
 import numpy as np
 
-<<<<<<< HEAD:IoT/video_server.py
-HOST = '172.30.1.126'
-=======
 # AWS 내부 아이피
 HOST = '172.30.1.96'
->>>>>>> 4e9d44c9ea19ff9ee515a172d4781476525affdc:IoT/video_server02.py
 PORT = 5000
 
 counter = 0

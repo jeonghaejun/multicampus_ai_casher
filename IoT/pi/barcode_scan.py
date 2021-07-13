@@ -1,7 +1,10 @@
 import requests
 import json
 import asyncio
+<<<<<<< HEAD:IoT/barcode_scan.py
 # 웹 소켓 모듈을 선언한다.
+=======
+>>>>>>> master:IoT/pi/barcode_scan.py
 import websockets
 
 async def connect(json_input):

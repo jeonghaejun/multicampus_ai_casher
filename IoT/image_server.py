@@ -3,11 +3,7 @@ import cv2
 import numpy as np
 
 
-<<<<<<< HEAD
-IP_ADDRESS_PC = '172.30.1.126'
-=======
 IP_ADDRESS_PC = '172.30.1.89'
->>>>>>> 4e9d44c9ea19ff9ee515a172d4781476525affdc
 PORT = 5000
 count = 0
 
