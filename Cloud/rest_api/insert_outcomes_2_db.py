@@ -11,7 +11,7 @@ def lambda_handler(event, context):
         host=os.environ['DB_HOST'], port=3306, user='admin', passwd=os.environ['DB_PW'], db='multicampus', charset='utf8')
 
     cursor = conn.cursor()
-    python_data = event  # json 파일로 변형
+    python_data = event  
     
     
     sql = "INSERT INTO Error_detection(Errorimg_id,Outcome,Result_info) values('{}','{}','{}')"
